@@ -28,11 +28,11 @@ def index():
         WCTA = float(request.form.get("WCTA"))
         print(NPTA, TLTA, WCTA)
         model = load_model("bankruptcy_model")
-        pred = model.predict([NPTA, TLTA, WCTA])
+        pred = model.predict([[NPTA, TLTA, WCTA]])
         s = "The predicted bankruptcy score is " + str(pred)
-        return(render_template("index.html", result = "1"))
+        return(render_template("index.html", result = s))
     else:
-        return(render_template("index.html", result = "2"))
+        return(render_template("index.html", result = "Try Again"))
 
 
 # In[ ]:
